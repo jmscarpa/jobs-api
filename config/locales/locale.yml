@@ -1,0 +1,14 @@
+'pt-BR':
+  submissions:
+    status:
+      unanalyzed: "Não Analisado"
+      pre_selected: "Pré Selecionado"
+      selected: "Selecionado"
+      rejected: "Rejeitado"
+      hired: "Contratado"
+    status_color:
+      unanalyzed: "secondary"
+      pre_selected: "info"
+      selected: "warning"
+      rejected: "danger"
+      hired: "success"
