@@ -10,38 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_14_010647) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_195654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "submission_id", null: false
-    t.text "content", default: "", null: false
+  create_table "jobs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.string "company_name", null: false
+    t.string "company_country", null: false
+    t.integer "role_type_id", null: false
+    t.text "description", null: false
+    t.float "salary", default: 0.0, null: false
+    t.boolean "remote", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["submission_id"], name: "index_comments_on_submission_id"
   end
 
-  create_table "submissions", force: :cascade do |t|
-    t.datetime "sent_at"
-    t.string "name"
-    t.string "whatsapp"
-    t.string "location"
-    t.integer "age"
-    t.string "working"
-    t.string "raw_salary"
-    t.float "expected_salary"
-    t.text "professional_experience"
-    t.text "english_professional_experience"
-    t.text "home_office"
-    t.text "team_work"
-    t.text "reason"
+  create_table "role_types", force: :cascade do |t|
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0, null: false
-    t.string "city"
-    t.string "state"
   end
 
-  add_foreign_key "comments", "submissions"
+  create_table "users", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
 end

@@ -2,9 +2,9 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
 
-set :application_name, 'api-selecao.jmscarpa.com.br'
+set :application_name, 'jobs-api.jmscarpa.com.br'
 set :domain, 'minas-tirith'
-set :deploy_to, '/home/jmscarpa/api-selecao.jmscarpa.com.br'
+set :deploy_to, '/home/jmscarpa/jobs-api.jmscarpa.com.br'
 set :repository, 'git@github.com:jmscarpa/selecao-api.git'
 set :branch, 'main'
 set :shared_files, ['.env']
